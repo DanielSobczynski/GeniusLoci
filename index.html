@@ -6,7 +6,7 @@
     <meta name="description" content="Genius Loci - Zaawansowane analizy przestrzenne GIS, wizualizacje terenowe i automatyzacja danych.">
     <title>Genius Loci | Analizy Przestrzenne i GIS</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap)" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,40 +14,45 @@
         <div class="container nav-container">
             <div class="logo">Genius Loci</div>
             <ul class="nav-links">
-                <li><a href="#uslugi">Usługi</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#uslugi" data-i18n="navServices">Usługi</a></li>
+                <li><a href="#portfolio" data-i18n="navPortfolio">Portfolio</a></li>
+                <li><a href="#kontakt" data-i18n="navContact">Kontakt</a></li>
             </ul>
+            <div class="lang-switch">
+                <button id="btn-pl" class="lang-btn active">PL</button>
+                <span>|</span>
+                <button id="btn-en" class="lang-btn">EN</button>
+            </div>
         </div>
     </nav>
 
     <header class="hero" id="home">
         <div class="container">
-            <h1>Duch miejsca ukryty w danych</h1>
-            <p>Profesjonalne analizy przestrzenne (GIS), wizualizacje NMT oraz automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.</p>
-            <a href="#kontakt" class="btn">Porozmawiajmy o Twoim projekcie</a>
+            <h1 data-i18n="heroTitle">Duch miejsca ukryty w danych</h1>
+            <p data-i18n="heroDesc">Profesjonalne analizy przestrzenne (GIS), wizualizacje NMT oraz automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.</p>
+            <a href="#kontakt" class="btn" data-i18n="heroBtn">Porozmawiajmy o Twoim projekcie</a>
         </div>
     </header>
 
     <section id="uslugi" class="services">
         <div class="container">
-            <h2>Dla kogo pracuję?</h2>
+            <h2 data-i18n="sectionServicesTitle">Dla kogo pracuję?</h2>
             <div class="grid-cards">
                 <div class="card">
-                    <h3>🏗️ Deweloperzy i Inwestorzy</h3>
-                    <p>Analizy chłonności terenu, modele ukształtowania (LiDAR), oceny ryzyka (strefy zalewowe, hałas) oraz wizualizacje wspierające sprzedaż.</p>
+                    <h3 data-i18n="cardDevTitle">🏗️ Deweloperzy i Inwestorzy</h3>
+                    <p data-i18n="cardDevDesc">Analizy chłonności terenu, modele ukształtowania (LiDAR), oceny ryzyka (strefy zalewowe, hałas) oraz wizualizacje wspierające sprzedaż.</p>
                 </div>
                 <div class="card">
-                    <h3>🏠 Rynek Nieruchomości</h3>
-                    <p>Raporty atrakcyjności działek, mapy dojazdów, uzbrojenia i MPZP, ułatwiające obrót nieruchomościami.</p>
+                    <h3 data-i18n="cardRETitle">🏠 Rynek Nieruchomości</h3>
+                    <p data-i18n="cardREDesc">Raporty atrakcyjności działek, mapy dojazdów, uzbrojenia i MPZP, ułatwiające obrót nieruchomościami.</p>
                 </div>
                 <div class="card">
-                    <h3>🏛️ Nauka i Archeologia</h3>
-                    <p>Zaawansowane przetwarzanie danych przestrzennych, identyfikacja obiektów terenowych i tworzenie map do publikacji naukowych.</p>
+                    <h3 data-i18n="cardSciTitle">🏛️ Nauka i Archeologia</h3>
+                    <p data-i18n="cardSciDesc">Zaawansowane przetwarzanie danych przestrzennych, identyfikacja obiektów terenowych i tworzenie map do publikacji naukowych.</p>
                 </div>
                 <div class="card">
-                    <h3>💼 Firmy B2B</h3>
-                    <p>Automatyzacja procesów GIS w Python/ArcPy, tworzenie narzędzi FME oraz dedykowanych aplikacji na platformach ESRI.</p>
+                    <h3 data-i18n="cardB2BTitle">💼 Firmy B2B</h3>
+                    <p data-i18n="cardB2BDesc">Automatyzacja procesów GIS w Python/ArcPy, tworzenie narzędzi FME oraz dedykowanych aplikacji na platformach ESRI.</p>
                 </div>
             </div>
         </div>
@@ -55,22 +60,18 @@
 
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2>Interaktywne Portfolio</h2>
-            <p class="section-subtitle">Przykładowe realizacje przestrzenne. Przesuwaj i powiększaj mapy.</p>
+            <h2 data-i18n="sectionPortfolioTitle">Interaktywne Portfolio</h2>
+            <p class="section-subtitle" data-i18n="portfolioSubtitle">Przykładowe realizacje przestrzenne. Przesuwaj i powiększaj mapy.</p>
             
             <div class="map-grid">
-                <!-- Miejsce na osadzenie mapy z ArcGIS Online / StoryMaps -->
                 <div class="map-container">
-                    <h3>Analiza chłonności i NMT</h3>
-                    <!-- Zamień atrybut src na link do swojej mapy -->
-                    <iframe src="[https://example.com/twoja-mapa-1](https://example.com/twoja-mapa-1)" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                    <h3 data-i18n="map1Title">Analiza chłonności i NMT</h3>
+                    <iframe src="https://example.com/twoja-mapa-1" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
-                <!-- Miejsce na osadzenie mapy z QGIS2web -->
                 <div class="map-container">
-                    <h3>Wizualizacja dla archeologii</h3>
-                    <!-- Zamień atrybut src na link do swojej mapy -->
-                    <iframe src="[https://example.com/twoja-mapa-2](https://example.com/twoja-mapa-2)" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                    <h3 data-i18n="map2Title">Wizualizacja dla archeologii</h3>
+                    <iframe src="https://example.com/twoja-mapa-2" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -78,19 +79,19 @@
 
     <section id="kontakt" class="contact">
         <div class="container">
-            <h2>Skontaktuj się ze mną</h2>
-            <p>Szukasz wsparcia przy analizie przestrzennej lub automatyzacji procesów GIS?</p>
+            <h2 data-i18n="sectionContactTitle">Skontaktuj się ze mną</h2>
+            <p data-i18n="contactSubtitle">Szukasz wsparcia przy analizie przestrzennej lub automatyzacji procesów GIS?</p>
             <div class="contact-info">
                 <p>📧 <strong>Email:</strong> <a href="mailto:twojadres@email.com">twojadres@email.com</a></p>
-                <p>💼 <strong>LinkedIn:</strong> <a href="[https://linkedin.com/in/twoj-profil](https://linkedin.com/in/twoj-profil)" target="_blank">Zobacz mój profil</a></p>
-                <p>📍 <strong>Google:</strong> <a href="[https://g.page/twoj-profil](https://g.page/twoj-profil)" target="_blank">Profil Firmowy</a></p>
+                <p>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/twoj-profil" target="_blank">Zobacz mój profil</a></p>
+                <p>📍 <strong>Google:</strong> <a href="https://g.page/twoj-profil" target="_blank">Profil Firmowy</a></p>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> Genius Loci - Analizy Przestrzenne i GIS. Wszelkie prawa zastrzeżone.</p>
+            <p>&copy; <span id="year"></span> <span data-i18n="footerRights">Genius Loci - Analizy Przestrzenne i GIS. Wszelkie prawa zastrzeżone.</span></p>
         </div>
     </footer>
 

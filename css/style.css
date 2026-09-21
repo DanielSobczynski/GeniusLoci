@@ -221,3 +221,30 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 2px 5px;
+    transition: color 0.3s;
+}
+
+.lang-btn.active {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.lang-btn:hover {
+    color: var(--accent-color);
+}
