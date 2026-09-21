@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Genius Loci - Specialized Consultancy: IT & GIS Expertise. Analizy przestrzenne, wizualizacje i automatyzacja danych.">
-    <title>Genius Loci | IT & GIS Expertise</title>
+    <meta name="description" content="Genius Loci - Specialized Consultancy: GIS Expertise. Analizy przestrzenne, wizualizacje i automatyzacja przetwarzania danych.">
+    <title>Genius Loci | GIS Expertise</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -41,24 +41,44 @@
 
     <section id="uslugi" class="services">
         <div class="container">
-            <h2 data-i18n="sectionServicesTitle">Dla kogo pracuję?</h2>
-            <div class="grid-cards">
-                <div class="card">
-                    <h3 data-i18n="cardDevTitle">🏗️ Wsparcie decyzji inwestycyjnych</h3>
-                    <p data-i18n="cardDevDesc">Analizy terenu, modele ukształtowania, oceny ryzyka oraz wizualizacje wspierające sprzedaż.</p>
+            <h2 class="section-title" data-i18n="sectionServicesTitle">Dla kogo pracuję?</h2>
+            <div class="services-grid">
+
+                <!-- 1. Deweloperzy -->
+                <div class="service-card">
+                    <div class="card-icon">🏗️</div>
+                    <h3 data-i18n="cardDevTitle">Deweloperzy & Inwestorzy</h3>
+                    <p data-i18n="cardDevDesc">Analizy chłonności terenu, optymalizacja ukształtowania działki (LiDAR/NMT), ocena ograniczeń przestrzennych oraz weryfikacja zapisów MPZP.</p>
                 </div>
-                <div class="card">
-                    <h3 data-i18n="cardRETitle">🏠 Analiza rynku nieruchomości</h3>
-                    <p data-i18n="cardREDesc">Raporty atrakcyjności działek, mapy dojazdów, uzbrojenia i MPZP, ułatwiające obrót nieruchomościami.</p>
+
+                <!-- 2. OZE / PV (Nowa karta) -->
+                <div class="service-card">
+                    <div class="card-icon">☀️</div>
+                    <h3 data-i18n="cardOzeTitle">Inwestorzy OZE & Fotowoltaika</h3>
+                    <p data-i18n="cardOzeDesc">Analizy potencjału solarnego, badania widoczności i oddziaływania krajobrazowego, przesiewanie terenu (site screening) pod farmy PV oraz ocena stref ochronnych.</p>
                 </div>
-                <div class="card">
-                    <h3 data-i18n="cardSciTitle">🏛️ Konsulting w badaniach naukowych</h3>
-                    <p data-i18n="cardSciDesc">Zaawansowane przetwarzanie danych przestrzennych, identyfikacja obiektów terenowych i tworzenie map do publikacji naukowych.</p>
+
+                <!-- 3. Nieruchomości -->
+                <div class="service-card">
+                    <div class="card-icon">🏠</div>
+                    <h3 data-i18n="cardRETitle">Rynek Nieruchomości</h3>
+                    <p data-i18n="cardREDesc">Raporty atrakcyjności działek, mapy izochron (czasów dojazdu), uzbrojenia terenu i dostępności infrastruktury ułatwiające obrót nieruchomościami.</p>
                 </div>
-                <div class="card">
-                    <h3 data-i18n="cardB2BTitle">💼 Współpraca przy automatyzacji procesów</h3>
-                    <p data-i18n="cardB2BDesc">Automatyzacja procesów GIS w Python/ArcPy, tworzenie narzędzi przetwarzania oraz dedykowanych aplikacji na platformach ESRI.</p>
+
+                <!-- 4. Nauka i Archeologia -->
+                <div class="service-card">
+                    <div class="card-icon">🏛️</div>
+                    <h3 data-i18n="cardSciTitle">Nauka & Archeologia</h3>
+                    <p data-i18n="cardSciDesc">Zaawansowane przetwarzanie danych przestrzennych, cyfrowe modele terenu, detekcja mikrorzeźby oraz identyfikacja obiektów z danych LiDAR do publikacji.</p>
                 </div>
+
+                <!-- 5. Automatyzacja B2B -->
+                <div class="service-card">
+                    <div class="card-icon">💼</div>
+                    <h3 data-i18n="cardB2BTitle">Biznes & Automatyzacja (B2B)</h3>
+                    <p data-i18n="cardB2BDesc">Automatyzacja powtarzalnych procesów GIS w Python/ArcPy, tworzenie narzędzi FME oraz dedykowanych aplikacji na platformach ESRI.</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -70,12 +90,12 @@
             
             <div class="map-grid">
                 <div class="map-container">
-                    <h3 data-i18n="map1Title">Analiza chłonności i NMT</h3>
+                    <h3 data-i18n="map1Title">Analiza widoczności farmy fotowoltaicznej</h3>
                     <iframe src="https://example.com/twoja-mapa-1" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div class="map-container">
-                    <h3 data-i18n="map2Title">Wizualizacja dla archeologii</h3>
+                    <h3 data-i18n="map2Title">Serwis routingowy dla danych badawczych</h3>
                     <iframe src="https://example.com/twoja-mapa-2" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
