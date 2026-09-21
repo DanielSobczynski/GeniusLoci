@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Genius Loci - Zaawansowane analizy przestrzenne GIS, wizualizacje terenowe i automatyzacja danych.">
-    <title>Genius Loci | Analizy Przestrzenne i GIS</title>
+    <meta name="description" content="Genius Loci - Specialized Consultancy: IT & GIS Expertise. Analizy przestrzenne, wizualizacje i automatyzacja danych.">
+    <title>Genius Loci | IT & GIS Expertise</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -12,7 +12,11 @@
 
     <nav class="navbar">
         <div class="container nav-container">
-            <div class="logo">Genius Loci</div>
+            <a href="#home" class="logo-link">
+                <!-- Wykorzystanie Twojego logo w nawigacji -->
+                <img src="assets/banner.png" alt="Genius Loci Logo" class="logo-img">
+                <span class="logo-text">Genius Loci</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#uslugi" data-i18n="navServices">Usługi</a></li>
                 <li><a href="#portfolio" data-i18n="navPortfolio">Portfolio</a></li>
@@ -28,6 +32,7 @@
 
     <header class="hero" id="home">
         <div class="container">
+            <p class="hero-subtitle" data-i18n="heroSubtitle">Specialized Consultancy • GIS Expertise</p>
             <h1 data-i18n="heroTitle">Duch miejsca ukryty w danych</h1>
             <p data-i18n="heroDesc">Profesjonalne analizy przestrzenne (GIS), wizualizacje NMT oraz automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.</p>
             <a href="#kontakt" class="btn" data-i18n="heroBtn">Porozmawiajmy o Twoim projekcie</a>
@@ -39,20 +44,20 @@
             <h2 data-i18n="sectionServicesTitle">Dla kogo pracuję?</h2>
             <div class="grid-cards">
                 <div class="card">
-                    <h3 data-i18n="cardDevTitle">🏗️ Deweloperzy i Inwestorzy</h3>
-                    <p data-i18n="cardDevDesc">Analizy chłonności terenu, modele ukształtowania (LiDAR), oceny ryzyka (strefy zalewowe, hałas) oraz wizualizacje wspierające sprzedaż.</p>
+                    <h3 data-i18n="cardDevTitle">🏗️ Wsparcie decyzji inwestycyjnych</h3>
+                    <p data-i18n="cardDevDesc">Analizy terenu, modele ukształtowania, oceny ryzyka oraz wizualizacje wspierające sprzedaż.</p>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="cardRETitle">🏠 Rynek Nieruchomości</h3>
+                    <h3 data-i18n="cardRETitle">🏠 Analiza rynku nieruchomości</h3>
                     <p data-i18n="cardREDesc">Raporty atrakcyjności działek, mapy dojazdów, uzbrojenia i MPZP, ułatwiające obrót nieruchomościami.</p>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="cardSciTitle">🏛️ Nauka i Archeologia</h3>
+                    <h3 data-i18n="cardSciTitle">🏛️ Konsulting w badaniach naukowych</h3>
                     <p data-i18n="cardSciDesc">Zaawansowane przetwarzanie danych przestrzennych, identyfikacja obiektów terenowych i tworzenie map do publikacji naukowych.</p>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="cardB2BTitle">💼 Firmy B2B</h3>
-                    <p data-i18n="cardB2BDesc">Automatyzacja procesów GIS w Python/ArcPy, tworzenie narzędzi FME oraz dedykowanych aplikacji na platformach ESRI.</p>
+                    <h3 data-i18n="cardB2BTitle">💼 Współpraca przy automatyzacji procesów</h3>
+                    <p data-i18n="cardB2BDesc">Automatyzacja procesów GIS w Python/ArcPy, tworzenie narzędzi przetwarzania oraz dedykowanych aplikacji na platformach ESRI.</p>
                 </div>
             </div>
         </div>
@@ -82,16 +87,16 @@
             <h2 data-i18n="sectionContactTitle">Skontaktuj się ze mną</h2>
             <p data-i18n="contactSubtitle">Szukasz wsparcia przy analizie przestrzennej lub automatyzacji procesów GIS?</p>
             <div class="contact-info">
-                <p>📧 <strong>Email:</strong> <a href="mailto:twojadres@email.com">twojadres@email.com</a></p>
-                <p>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/twoj-profil" target="_blank">Zobacz mój profil</a></p>
-                <p>📍 <strong>Google:</strong> <a href="https://g.page/twoj-profil" target="_blank">Profil Firmowy</a></p>
+                <p>📧 <strong>Email:</strong> <a href="mailto:geniuslocids@gmail.com">geniuslocids@gmail.com</a></p>
+                <p>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daniel-sobczy%C5%84ski-12565429b/" target="_blank">Zobacz mój profil</a></p>
+                <p>📍 <strong>Google:</strong> <a href="https://share.google/nWn5eW4aRGr3lkeRw" target="_blank">Profil Firmowy</a></p>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> <span data-i18n="footerRights">Genius Loci - Analizy Przestrzenne i GIS. Wszelkie prawa zastrzeżone.</span></p>
+            <p>&copy; <span id="year"></span> <span data-i18n="footerRights">Genius Loci - Analizy Przestrzenne. Wszelkie prawa zastrzeżone.</span></p>
         </div>
     </footer>
 

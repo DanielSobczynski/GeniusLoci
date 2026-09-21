@@ -1,9 +1,9 @@
-// Słownik tłumaczeń PL / EN
 const translations = {
     pl: {
         navServices: "Usługi",
         navPortfolio: "Portfolio",
         navContact: "Kontakt",
+        heroSubtitle: "Doradztwo Specjalistyczne • Ekspertyzy GIS",
         heroTitle: "Duch miejsca ukryty w danych",
         heroDesc: "Profesjonalne analizy przestrzenne (GIS), wizualizacje NMT oraz automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.",
         heroBtn: "Porozmawiajmy o Twoim projekcie",
@@ -22,12 +22,13 @@ const translations = {
         map2Title: "Wizualizacja dla archeologii",
         sectionContactTitle: "Skontaktuj się ze mną",
         contactSubtitle: "Szukasz wsparcia przy analizie przestrzennej lub automatyzacji procesów GIS?",
-        footerRights: "Genius Loci - Analizy Przestrzenne i GIS. Wszelkie prawa zastrzeżone."
+        footerRights: "Genius Loci - Specialized Consultancy. Wszelkie prawa zastrzeżone."
     },
     en: {
         navServices: "Services",
         navPortfolio: "Portfolio",
         navContact: "Contact",
+        heroSubtitle: "Specialized Consultancy •  GIS Expertise",
         heroTitle: "Genius Loci – Hidden in Spatial Data",
         heroDesc: "Professional GIS spatial analysis, 3D terrain modeling (DEM), and data processing automation for business, research, and real estate.",
         heroBtn: "Let's discuss your project",
@@ -46,15 +47,13 @@ const translations = {
         map2Title: "Visualizations for Archaeology",
         sectionContactTitle: "Get in Touch",
         contactSubtitle: "Looking for spatial analysis support or GIS process automation?",
-        footerRights: "Genius Loci - Spatial Analysis & GIS. All rights reserved."
+        footerRights: "Genius Loci - Specialized Consultancy. All rights reserved."
     }
 };
 
-// Funkcja zmieniająca język na stronie
 function setLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
     
-    // Podmiana tekstów na podstawie data-i18n
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
@@ -62,7 +61,6 @@ function setLanguage(lang) {
         }
     });
 
-    // Aktualizacja wybranego przycisku
     const btnPl = document.getElementById('btn-pl');
     const btnEn = document.getElementById('btn-en');
     
@@ -73,18 +71,15 @@ function setLanguage(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Odczyt zapisanego języka lub domyślny 'pl'
     const savedLang = localStorage.getItem('preferredLang') || 'pl';
     setLanguage(savedLang);
 
-    // Nasłuchiwanie kliknięć
     const btnPl = document.getElementById('btn-pl');
     const btnEn = document.getElementById('btn-en');
     
     if (btnPl) btnPl.addEventListener('click', () => setLanguage('pl'));
     if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
 
-    // Aktualizacja roku w stopce
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
