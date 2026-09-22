@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa 1</title>
+    
+    <!-- 1. Styl i skrypt biblioteki Leaflet (wczytywane z sieci) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- 2. Style usuwające marginesy, by mapa wypełniała cały iframe -->
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; }
+        #map { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+
+    <!-- Kontener na mapę -->
+    <div id="map"></div>
+
+    <script>
+        // 1. Inicjalizacja mapy (ustaw współrzędne środka [szerokość, długość] i przybliżenie)
+        var map = L.map('map').setView([52.2297, 21.0122], 10); // Przykładowo: Warszawa, zoom 10
+
+        // 2. Dodanie mapy podkładowej (Basemap). 
+        // Tutaj jako ciekawostka podkład od Esri (będzie Ci bliski z ArcGIS!)
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+        }).addTo(map);
+
+        // 3. (OPCJONALNIE) Dodanie prostego markera
+        L.marker([52.2297, 21.0122]).addTo(map)
+            .bindPopup('To jest pierwszy punkt mojego portfolio!');
+
+        // 4. (OPCJONALNIE) Wczytanie wyeksportowanego GeoJSON z ArcGIS
+        /* 
+        fetch('dane_mapa1.geojson')
+            .then(response => response.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: function (feature) {
+                        return {color: "#6d5c53", weight: 2}; // style nawiązujące do Twojej strony
+                    },
+                    onEachFeature: function (feature, layer) {
+                        // Jeśli w ArcGIS miałeś atrybut "Nazwa", tu go wyświetlisz po kliknięciu
+                        if (feature.properties && feature.properties.Nazwa) {
+                            layer.bindPopup(feature.properties.Nazwa);
+                        }
+                    }
+                }).addTo(map);
+            });
+        */
+    </script>
+</body>
+</html>
