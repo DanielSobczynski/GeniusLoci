@@ -105,23 +105,57 @@
     </section>
 
     <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 data-i18n="sectionPortfolioTitle">Interaktywne Portfolio</h2>
-            <p class="section-subtitle" data-i18n="portfolioSubtitle">Przykładowe realizacje przestrzenne. Przesuwaj i powiększaj mapy.</p>
-            
-            <div class="map-grid">
-                <div class="map-container">
-                    <h3 data-i18n="map1Title">Analiza widoczności farmy fotowoltaicznej</h3>
-                    <iframe src="https://example.com/twoja-mapa-1" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
-                </div>
+            <div class="container">
+                <h2 data-i18n="sectionPortfolioTitle">Interaktywne Portfolio</h2>
+                <p class="section-subtitle" data-i18n="portfolioSubtitle">Przykładowe realizacje przestrzenne. Przesuwaj i powiększaj mapy, aby przetestować warstwy.</p>
                 
-                <div class="map-container">
-                    <h3 data-i18n="map2Title">Serwis routingowy dla danych badawczych</h3>
-                    <iframe src="https://example.com/twoja-mapa-2" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                <div class="map-grid">
+                    <!-- 1. Analiza potencjału działki -->
+                    <div class="map-card">
+                        <div class="map-container">
+                            <iframe src="maps/dzialka/index.html" title="Analiza potencjału działki" width="100%" height="380" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="map-info">
+                            <h3 data-i18n="map1Title">Analiza potencjału i zagrożeń działki</h3>
+                            <p data-i18n="map1Desc">Ocena odległości do infrastruktury, uzbrojenia terenu oraz analiza zagrożeń (strefy zalewowe, osuwiskowe).</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Analiza widoczności farmy PV -->
+                    <div class="map-card">
+                        <div class="map-container">
+                            <iframe src="maps/viewshed-pv/index.html" title="Analiza widoczności OZE" width="100%" height="380" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="map-info">
+                            <h3 data-i18n="map2Title">Analiza widoczności (Viewshed) dla OZE</h3>
+                            <p data-i18n="map2Desc">Modelowanie oddziaływania krajobrazowego i widoczności projektowanej farmy fotowoltaicznej z otaczających terenów.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Mapa izochron -->
+                    <div class="map-card">
+                        <div class="map-container">
+                            <iframe src="maps/izochrony/index.html" title="Mapa izochron czasów dojazdu" width="100%" height="380" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="map-info">
+                            <h3 data-i18n="map3Title">Mapa izochron – Dostępność czasowa</h3>
+                            <p data-i18n="map3Desc">Analiza stref czasu dojazdu (samochodem, pieszo, transportem publicznym) z wybranej nieruchomości.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Serwis routingowy dla nauki -->
+                    <div class="map-card">
+                        <div class="map-container">
+                            <iframe src="maps/routing/index.html" title="Serwis routingowy" width="100%" height="380" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="map-info">
+                            <h3 data-i18n="map4Title">Serwis routingowy dla danych badawczych</h3>
+                            <p data-i18n="map4Desc">Zaawansowana analiza sieciowa i optymalizacja tras dla projektów naukowych, historycznych oraz logistycznych.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Sekcja: Kontakt -->
     <section id="kontakt" class="contact">

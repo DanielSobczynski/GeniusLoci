@@ -27,13 +27,21 @@ const translations = {
         cardRoutingTitle: "Routing & Analizy Sieciowe",
         cardRoutingDesc: "Optymalizacja tras dostaw (VRP), modelowanie kosztów transportu, wyznaczanie stref obsługi (Service Areas) oraz analizy dostępności komunikacyjnej dla łańcuchów dostaw.",
         
-        // Portfolio
+        // Portfolio - 4 nowe interaktywne mapy
         sectionPortfolioTitle: "Interaktywne Portfolio",
         portfolioSubtitle: "Przykładowe realizacje przestrzenne. Przesuwaj, przybliżaj i klikaj, aby zbadać dane.",
-        portOzeTitle: "Analiza Potencjału Solarnego (OZE)",
-        portOzeDesc: "Interaktywna mapa nasłonecznienia dachów. Kliknij na budynek, aby sprawdzić szacowany uzysk energii i optymalny kąt nachylenia paneli.",
-        portSciTitle: "Detekcja obiektów (LiDAR vs Ortofotomapa)",
-        portSciDesc: "Użyj suwaka, aby zobaczyć jak cieniowanie NMT ukryte pod gęstym lasem ujawnia zarysy wczesnośredniowiecznego grodziska.",
+        
+        port1Title: "Analiza potencjału i zagrożeń działki",
+        port1Desc: "Ocena odległości do infrastruktury, uzbrojenia terenu oraz analiza zagrożeń (strefy zalewowe, osuwiskowe).",
+        
+        port2Title: "Analiza widoczności (Viewshed) dla OZE",
+        port2Desc: "Modelowanie oddziaływania krajobrazowego i widoczności projektowanej farmy fotowoltaicznej z otaczających terenów.",
+        
+        port3Title: "Mapa izochron – Dostępność czasowa",
+        port3Desc: "Analiza stref czasu dojazdu (samochodem, pieszo, transportem publicznym) z wybranej nieruchomości.",
+        
+        port4Title: "Serwis routingowy dla danych badawczych",
+        port4Desc: "Zaawansowana analiza sieciowa i optymalizacja tras dla projektów naukowych, historycznych oraz logistycznych.",
         
         // Kontakt
         sectionContactTitle: "Skontaktuj się ze mną",
@@ -71,13 +79,21 @@ const translations = {
         cardRoutingTitle: "Routing & Network Analysis",
         cardRoutingDesc: "Delivery route optimization (VRP), transportation cost modeling, service area generation, and accessibility analysis for supply chains.",
         
-        // Portfolio
+        // Portfolio - 4 nowe interaktywne mapy
         sectionPortfolioTitle: "Interactive Portfolio",
         portfolioSubtitle: "Sample spatial projects. Pan, zoom, and click to explore the data.",
-        portOzeTitle: "Solar Potential Analysis (Renewable Energy)",
-        portOzeDesc: "Interactive roof insolation map. Click on a building to check the estimated energy yield and optimal panel tilt angle.",
-        portSciTitle: "Feature Detection (LiDAR vs. Orthophoto)",
-        portSciDesc: "Use the slider to see how DEM hillshading beneath dense forest reveals the outlines of an early medieval settlement.",
+        
+        port1Title: "Site Potential & Hazard Analysis",
+        port1Desc: "Distance assessment to infrastructure, utilities, and flood/landslide risk zone identification.",
+        
+        port2Title: "Viewshed Analysis for Renewable Energy",
+        port2Desc: "Landscape impact modeling and visibility assessment for proposed PV and wind farms.",
+        
+        port3Title: "Isochrone Map – Accessibility & Drive Time",
+        port3Desc: "Travel time zone analysis (by car, walking, public transit) from a selected property.",
+        
+        port4Title: "Routing Service for Research Data",
+        port4Desc: "Advanced network analysis and route optimization for academic, historical, and spatial research projects.",
         
         // Kontakt
         sectionContactTitle: "Get in Touch",
