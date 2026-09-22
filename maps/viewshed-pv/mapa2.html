@@ -85,11 +85,11 @@
         // Wycentrowanie mapy dokładnie na Twoim rastrze (zapobiega przeskakiwaniu)
         map.fitBounds(imageBounds);
 
-        // 3. Wczytanie WEKTORÓW (Granica działki / inwestycji)
+        // 3. Wczytanie WEKTORÓW (Granica działki) + AUTOMATYCZNE PRZYBLIŻENIE NA DZIAŁKĘ
         fetch('dzialka.geojson')
             .then(res => res.json())
             .then(data => {
-                L.geoJSON(data, {
+                var dzialkaLayer = L.geoJSON(data, {
                     style: {
                         color: '#000000',
                         weight: 2,
@@ -97,6 +97,9 @@
                         fill: false
                     }
                 }).addTo(map);
+
+                // To ta linijka odpowiada za dopasowanie kadru do granic działki z marginesem 40px:
+                map.fitBounds(dzialkaLayer.getBounds(), { padding: [40, 40] });
             });
 
         // 4. Wczytanie WEKTORÓW (Stoły Fotowoltaiczne)
