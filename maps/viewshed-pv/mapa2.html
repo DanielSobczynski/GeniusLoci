@@ -71,7 +71,7 @@
 
     <script>
         // 1. Inicjalizacja mapy wycentrowana na Twojej inwestycji
-        var map = L.map('map').setView([50.84, 16.15], 11); 
+        var map = L.map('map').setView([50.85, 16.176], 14); 
 
         // 2. Wczytanie RASTRA WIDOCZNOŚCI z NMT
         // WAŻNE: Pierwsza wartość to Szerokość (Lat ~50.x), druga to Długość (Lon ~16.x)
@@ -81,9 +81,6 @@
         var rasterOverlay = L.imageOverlay('Viewshed_map.png', imageBounds, {
             opacity: 1.0
         }).addTo(map);
-
-        // Wycentrowanie mapy dokładnie na Twoim rastrze (zapobiega przeskakiwaniu)
-        map.fitBounds(imageBounds);
 
         // 3. Wczytanie WEKTORÓW (Granica działki) + AUTOMATYCZNE PRZYBLIŻENIE NA DZIAŁKĘ
         fetch('dzialka.geojson')
@@ -97,9 +94,6 @@
                         fill: false
                     }
                 }).addTo(map);
-
-                // To ta linijka odpowiada za dopasowanie kadru do granic działki z marginesem 40px:
-                map.fitBounds(dzialkaLayer.getBounds(), { padding: [40, 40] });
             });
 
         // 4. Wczytanie WEKTORÓW (Stoły Fotowoltaiczne)
