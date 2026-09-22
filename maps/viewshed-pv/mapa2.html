@@ -17,15 +17,16 @@
 
     <script>
         // 1. Inicjalizacja mapy wycentrowana na Twojej inwestycji
-       // 1. Inicjalizacja mapy ze standardowym, jasnym podkładem OpenStreetMap
-        var map = L.map('map').setView([50.84, 16.15], 13); 
+        var map = L.map('map').setView([50.84, 16.15], 13); // Wpisz przybliżone współrzędne Starych Bogaczowic
 
+        // 2. Podkład satelitarny z OSM
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // 2. Wczytanie RASTRA WIDOCZNOŚCI z NMT (PNG)
-        var imageBounds = [[50.812, 16.125], [50.874, 16.218]]; 
+        // 3. Wczytanie RASTRA WIDOCZNOŚCI z NMT (wyeksportowanego z ArcGIS jako PNG)
+        // Wpisz dokładne narożniki [Południowy-Zachód], [Północny-Wschód] w WGS84
+        var imageBounds = [[50.812, 16.125], [50.874, 16.218]];  
         
         L.imageOverlay('Viewshed_map.png', imageBounds, {
             opacity: 0.5
