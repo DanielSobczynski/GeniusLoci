@@ -7,8 +7,53 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
         #map { width: 100%; height: 100%; }
+
+        /* Stylizacja okna legendy */
+        .legend {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 12px 16px;
+            line-height: 24px;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 13px;
+        }
+        .legend h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #111;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .legend-key {
+            display: inline-block;
+            width: 22px;
+            height: 14px;
+            margin-right: 10px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .key-line {
+            border-bottom: 2px dashed #000;
+            height: 0px;
+            margin-top: 6px;
+        }
+        .key-pv {
+            background: #2b6cb0;
+            border: 1px solid #1a365d;
+        }
+        .key-viewshed {
+            background: rgba(46, 204, 113, 0.7);
+            border: 1px solid #27ae60;
+        }
     </style>
 </head>
 <body>
@@ -16,23 +61,21 @@
     <div id="map"></div>
 
     <script>
-        // 1. Inicjalizacja mapy wycentrowana na Twojej inwestycji
-        var map = L.map('map').setView([50.84, 16.15], 13); // Wpisz przybliżone współrzędne Starych Bogaczowic
+        // 1. Inicjalizacja mapy ze standardowym, jasnym podkładem OpenStreetMap
+        var map = L.map('map').setView([50.84, 16.15], 13); 
 
-        // 2. Podkład satelitarny z ESRI (dla świetnego efektu wizualnego)
-        var esriSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri'
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // 3. Wczytanie RASTRA WIDOCZNOŚCI z NMT (wyeksportowanego z ArcGIS jako PNG)
-        // Wpisz dokładne narożniki [Południowy-Zachód], [Północny-Wschód] w WGS84
-        var imageBounds = [[50.812, 16.125], [50.874, 16.218]]; 
+        // 2. Wczytanie RASTRA WIDOCZNOŚCI z NMT (PNG)
+        var imageBounds = [[50.820, 16.120], [50.860, 16.180]]; 
         
-        L.imageOverlay('Viewshed_map.png', imageBounds, {
-            opacity: 0.75 // ustaw przezroczystość, by podkład satelitarny lekko prześwitywał
+        L.imageOverlay('widocznosc_nmt.png', imageBounds, {
+            opacity: 0.85
         }).addTo(map);
 
-        // 4. Wczytanie WEKTORÓW (Granica działki)
+        // 3. Wczytanie WEKTORÓW (Granica inwestycji)
         fetch('dzialka.geojson')
             .then(res => res.json())
             .then(data => {
@@ -40,13 +83,13 @@
                     style: {
                         color: '#000000',
                         weight: 2,
-                        dashArray: '5, 5', // przerywana linia jak na Twoim zrzucie
+                        dashArray: '6, 6',
                         fill: false
                     }
                 }).addTo(map);
             });
 
-        // 5. Wczytanie WEKTORÓW (Stoły Fotowoltaiczne)
+        // 4. Wczytanie WEKTORÓW (Stoły Fotowoltaiczne)
         fetch('stoly_pv.geojson')
             .then(res => res.json())
             .then(data => {
@@ -54,14 +97,39 @@
                     style: {
                         color: '#1a365d',
                         fillColor: '#2b6cb0',
-                        fillOpacity: 0.8,
+                        fillOpacity: 0.85,
                         weight: 1
                     },
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup('<b>Stół PV</b><br>Moc/Oznaczenie z ArcGIS');
+                        layer.bindPopup('<b>Stół fotowoltaiczny</b>');
                     }
                 }).addTo(map);
             });
+
+        // 5. Dodanie okienka legendy w prawym dolnym rogu
+        var legend = L.control({ position: 'bottomright' });
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML = `
+                <h4>Legenda</h4>
+                <div class="legend-item">
+                    <span class="legend-key key-line"></span>
+                    <span>Granica inwestycji</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-key key-pv"></span>
+                    <span>Stoły fotowoltaiczne</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-key key-viewshed"></span>
+                    <span>Zasięg widoczności</span>
+                </div>
+            `;
+            return div;
+        };
+
+        legend.addTo(map);
     </script>
 </body>
 </html>
