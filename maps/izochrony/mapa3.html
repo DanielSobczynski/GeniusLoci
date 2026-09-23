@@ -47,10 +47,9 @@
         // 1. Inicjalizacja mapy (zoom i kadr zostaną nadpisane automatycznie)
         var map = L.map('map').setView([50.06, 19.94], 12); 
 
-        // 2. Podkład mapowy (Ciemny, elegancki styl podkreślający dane wektorowe)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-            subdomains: 'abcd',
+        // 2. Podkład mapowy (Standardowa mapa OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             maxZoom: 19
         }).addTo(map);
 
@@ -69,7 +68,7 @@
             return {
                 fillColor: getColor(timeLimit),
                 weight: 1.5,
-                color: '#ffffff', // Biała, cienka granica między strefami
+                color: '#444444',
                 opacity: 0.8,
                 fillOpacity: 0.4 // Przezroczystość, by widać było siatkę ulic pod spodem
             };
