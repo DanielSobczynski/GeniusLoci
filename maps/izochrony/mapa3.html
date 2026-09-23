@@ -3,55 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa 1</title>
-    
-    <!-- 1. Styl i skrypt biblioteki Leaflet (wczytywane z sieci) -->
+    <title>Analiza Dostępności Czasowej</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <!-- 2. Style usuwające marginesy, by mapa wypełniała cały iframe -->
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; }
-        #map { width: 100%; height: 100%; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
+        #map { width: 100%; height: 100%; background: #1a1a1a; }
+
+        /* Stylizacja profesjonalnej legendy */
+        .legend {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            line-height: 24px;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 13px;
+        }
+        .legend h4 {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2b231f; /* Nawiązanie do brandingu Genius Loci */
+            border-bottom: 2px solid #8c7a6b;
+            padding-bottom: 6px;
+        }
+        .legend i {
+            width: 24px;
+            height: 16px;
+            float: left;
+            margin-right: 12px;
+            opacity: 0.8;
+            border-radius: 3px;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Kontener na mapę -->
     <div id="map"></div>
 
     <script>
-        // 1. Inicjalizacja mapy (ustaw współrzędne środka [szerokość, długość] i przybliżenie)
-        var map = L.map('map').setView([52.2297, 21.0122], 10); // Przykładowo: Warszawa, zoom 10
+        // 1. Inicjalizacja mapy (zoom i kadr zostaną nadpisane automatycznie)
+        var map = L.map('map').setView([50.06, 19.94], 12); 
 
-        // 2. Dodanie mapy podkładowej (Basemap). 
-        // Tutaj jako ciekawostka podkład od Esri (będzie Ci bliski z ArcGIS!)
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+        // 2. Podkład mapowy (Ciemny, elegancki styl podkreślający dane wektorowe)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 19
         }).addTo(map);
 
-        // 3. (OPCJONALNIE) Dodanie prostego markera
-        L.marker([52.2297, 21.0122]).addTo(map)
-            .bindPopup('To jest pierwszy punkt mojego portfolio!');
+        // 3. Funkcja przypisująca kolory na podstawie czasu (kolumna ToBreak z ArcGIS)
+        function getColor(time) {
+            return time <= 5  ? '#2ecc71' : // Zielony dla 5 min
+                   time <= 10 ? '#f1c40f' : // Żółty dla 10 min
+                   time <= 15 ? '#e74c3c' : // Czerwony dla 15 min
+                                '#95a5a6';  // Szary dla wartości powyżej
+        }
 
-        // 4. (OPCJONALNIE) Wczytanie wyeksportowanego GeoJSON z ArcGIS
-        /* 
-        fetch('dane_mapa1.geojson')
-            .then(response => response.json())
+        function styleIsochrones(feature) {
+            // ArcGIS Pro zapisuje wartość odcięcia w polu 'ToBreak'
+            var timeLimit = feature.properties.ToBreak; 
+            
+            return {
+                fillColor: getColor(timeLimit),
+                weight: 1.5,
+                color: '#ffffff', // Biała, cienka granica między strefami
+                opacity: 0.8,
+                fillOpacity: 0.4 // Przezroczystość, by widać było siatkę ulic pod spodem
+            };
+        }
+
+        // 4. Wczytanie pliku GeoJSON i dodanie interaktywności
+        fetch('izochrony.geojson')
+            .then(res => res.json())
             .then(data => {
-                L.geoJSON(data, {
-                    style: function (feature) {
-                        return {color: "#6d5c53", weight: 2}; // style nawiązujące do Twojej strony
-                    },
-                    onEachFeature: function (feature, layer) {
-                        // Jeśli w ArcGIS miałeś atrybut "Nazwa", tu go wyświetlisz po kliknięciu
-                        if (feature.properties && feature.properties.Nazwa) {
-                            layer.bindPopup(feature.properties.Nazwa);
-                        }
+                var isochroneLayer = L.geoJSON(data, {
+                    style: styleIsochrones,
+                    onEachFeature: function(feature, layer) {
+                        // Pop-up wyświetlający czas po kliknięciu w daną strefę
+                        var time = feature.properties.ToBreak;
+                        layer.bindPopup('<b>Strefa dojazdu:</b> do ' + time + ' min.');
+                        
+                        // Efekt podświetlenia po najechaniu myszką (Hover)
+                        layer.on({
+                            mouseover: function(e) {
+                                var currentLayer = e.target;
+                                currentLayer.setStyle({ fillOpacity: 0.7, weight: 2 });
+                            },
+                            mouseout: function(e) {
+                                isochroneLayer.resetStyle(e.target);
+                            }
+                        });
                     }
                 }).addTo(map);
-            });
-        */
+
+                // Automatyczne wykadrowanie mapy, by objąć całą największą izochronę
+                map.fitBounds(isochroneLayer.getBounds(), { padding: [30, 30] });
+            })
+            .catch(err => console.error("Błąd ładowania pliku GeoJSON: ", err));
+
+        // 5. Dodanie profesjonalnej legendy
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend'),
+                grades = [0, 5, 10], // Dolne granice przedziałów
+                labels = ['do 5 min', 'do 10 min', 'do 15 min'];
+
+            div.innerHTML = '<h4>Dostępność czasowa<br><small style="color:#666; font-weight:normal;">(Samochód osobowy)</small></h4>';
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + labels[i] + '<br>';
+            }
+            return div;
+        };
+
+        legend.addTo(map);
+
+        // Zapobieganie błędom wyświetlania w ramkach iframe
+        setTimeout(function() { map.invalidateSize(); }, 300);
     </script>
 </body>
 </html>
