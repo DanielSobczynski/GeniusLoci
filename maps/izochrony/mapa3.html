@@ -44,16 +44,45 @@
     <div id="map"></div>
 
     <script>
-        // 1. Inicjalizacja mapy (zoom i kadr zostaną nadpisane automatycznie)
+        // 1. Odczytanie parametru języka z URL (domyślnie 'pl')
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'pl';
+
+        // 2. Słownik tłumaczeń
+        const translations = {
+            pl: {
+                title: "Analiza Dostępności Czasowej",
+                popupZone: "Strefa dojazdu:",
+                popupUpTo: "do",
+                popupMin: "min.",
+                legendTitle: "Dostępność czasowa",
+                legendSubtitle: "(Samochód osobowy)",
+                labels: ["do 5 min", "do 10 min", "do 15 min"]
+            },
+            en: {
+                title: "Travel Time Accessibility Analysis",
+                popupZone: "Drive zone:",
+                popupUpTo: "up to",
+                popupMin: "min.",
+                legendTitle: "Travel Time Accessibility",
+                legendSubtitle: "(Passenger car)",
+                labels: ["up to 5 min", "up to 10 min", "up to 15 min"]
+            }
+        };
+
+        const t = translations[currentLang] || translations.pl;
+        document.title = t.title;
+
+        // 3. Inicjalizacja mapy
         var map = L.map('map').setView([50.06, 19.94], 12); 
 
-        // 2. Podkład mapowy (Standardowa mapa OpenStreetMap)
+        // 4. Podkład mapowy (Standardowa mapa OpenStreetMap)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             maxZoom: 19
         }).addTo(map);
 
-        // 3. Funkcja przypisująca kolory na podstawie czasu (kolumna ToBreak z ArcGIS)
+        // 5. Funkcja przypisująca kolory na podstawie czasu (kolumna ToBreak z ArcGIS)
         function getColor(time) {
             return time <= 5  ? '#2ecc71' : // Zielony dla 5 min
                    time <= 10 ? '#f1c40f' : // Żółty dla 10 min
@@ -62,7 +91,6 @@
         }
 
         function styleIsochrones(feature) {
-            // ArcGIS Pro zapisuje wartość odcięcia w polu 'ToBreak'
             var timeLimit = feature.properties.ToBreak; 
             
             return {
@@ -70,22 +98,20 @@
                 weight: 1.5,
                 color: '#444444',
                 opacity: 0.8,
-                fillOpacity: 0.4 // Przezroczystość, by widać było siatkę ulic pod spodem
+                fillOpacity: 0.4
             };
         }
 
-        // 4. Wczytanie pliku GeoJSON i dodanie interaktywności
+        // 6. Wczytanie pliku GeoJSON i dodanie interaktywności
         fetch('izochrony.geojson')
             .then(res => res.json())
             .then(data => {
                 var isochroneLayer = L.geoJSON(data, {
                     style: styleIsochrones,
                     onEachFeature: function(feature, layer) {
-                        // Pop-up wyświetlający czas po kliknięciu w daną strefę
                         var time = feature.properties.ToBreak;
-                        layer.bindPopup('<b>Strefa dojazdu:</b> do ' + time + ' min.');
+                        layer.bindPopup('<b>' + t.popupZone + '</b> ' + t.popupUpTo + ' ' + time + ' ' + t.popupMin);
                         
-                        // Efekt podświetlenia po najechaniu myszką (Hover)
                         layer.on({
                             mouseover: function(e) {
                                 var currentLayer = e.target;
@@ -98,31 +124,28 @@
                     }
                 }).addTo(map);
 
-                // Automatyczne wykadrowanie mapy, by objąć całą największą izochronę
                 map.fitBounds(isochroneLayer.getBounds(), { padding: [30, 30] });
             })
             .catch(err => console.error("Błąd ładowania pliku GeoJSON: ", err));
 
-        // 5. Dodanie profesjonalnej legendy
+        // 7. Dodanie profesjonalnej legendy
         var legend = L.control({position: 'bottomright'});
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'legend'),
-                grades = [0, 5, 10], // Dolne granice przedziałów
-                labels = ['do 5 min', 'do 10 min', 'do 15 min'];
+                grades = [0, 5, 10];
 
-            div.innerHTML = '<h4>Dostępność czasowa<br><small style="color:#666; font-weight:normal;">(Samochód osobowy)</small></h4>';
+            div.innerHTML = '<h4>' + t.legendTitle + '<br><small style="color:#666; font-weight:normal;">' + t.legendSubtitle + '</small></h4>';
 
             for (var i = 0; i < grades.length; i++) {
                 div.innerHTML +=
-                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + labels[i] + '<br>';
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' + t.labels[i] + '<br>';
             }
             return div;
         };
 
         legend.addTo(map);
 
-        // Zapobieganie błędom wyświetlania w ramkach iframe
         setTimeout(function() { map.invalidateSize(); }, 300);
     </script>
 </body>

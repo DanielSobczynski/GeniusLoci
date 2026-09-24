@@ -70,23 +70,52 @@
     <div id="map"></div>
 
     <script>
-        // 1. Inicjalizacja mapy wycentrowana na Twojej inwestycji
+        // 1. Odczytanie parametru języka z URL (domyślnie 'pl')
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'pl';
+
+        // 2. Słownik tłumaczeń
+        const translations = {
+            pl: {
+                title: "Analiza Widoczności PV",
+                pvPopup: "Stół fotowoltaiczny",
+                legendTitle: "Legenda",
+                legendBoundary: "Granica inwestycji",
+                legendPV: "Stoły fotowoltaiczne",
+                legendVisibility: "Zasięg widoczności:",
+                legendPartial: "Częściowa",
+                legendFull: "Całkowita"
+            },
+            en: {
+                title: "PV Visibility Analysis",
+                pvPopup: "PV Table Array",
+                legendTitle: "Legend",
+                legendBoundary: "Investment boundary",
+                legendPV: "PV Tables",
+                legendVisibility: "Visibility range:",
+                legendPartial: "Partial",
+                legendFull: "Full"
+            }
+        };
+
+        const t = translations[currentLang] || translations.pl;
+        document.title = t.title;
+
+        // 3. Inicjalizacja mapy
         var map = L.map('map').setView([50.85, 16.176], 14); 
 
-        // 2. Wczytanie RASTRA WIDOCZNOŚCI z NMT
-        // WAŻNE: Pierwsza wartość to Szerokość (Lat ~50.x), druga to Długość (Lon ~16.x)
-        // [[Południowy-Zachód: Szerokość, Długość], [Północny-Wschód: Szerokość, Długość]]
+        // 4. Wczytanie RASTRA WIDOCZNOŚCI z NMT
         var imageBounds = [[50.812, 16.125], [50.874, 16.218]]; 
         
         var rasterOverlay = L.imageOverlay('Viewshed_map.png', imageBounds, {
             opacity: 1.0
         }).addTo(map);
 
-        // 3. Wczytanie WEKTORÓW (Granica działki) + AUTOMATYCZNE PRZYBLIŻENIE NA DZIAŁKĘ
+        // 5. Wczytanie WEKTORÓW (Granica działki)
         fetch('dzialka.geojson')
             .then(res => res.json())
             .then(data => {
-                var dzialkaLayer = L.geoJSON(data, {
+                L.geoJSON(data, {
                     style: {
                         color: '#000000',
                         weight: 2,
@@ -96,7 +125,7 @@
                 }).addTo(map);
             });
 
-        // 4. Wczytanie WEKTORÓW (Stoły Fotowoltaiczne)
+        // 6. Wczytanie WEKTORÓW (Stoły Fotowoltaiczne)
         fetch('stoly_pv.geojson')
             .then(res => res.json())
             .then(data => {
@@ -108,32 +137,32 @@
                         weight: 1
                     },
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup('<b>Stół fotowoltaiczny</b>');
+                        layer.bindPopup('<b>' + t.pvPopup + '</b>');
                     }
                 }).addTo(map);
             });
 
-        // 5. Dodanie interaktywnej legendy w prawym dolnym rogu
+        // 7. Dodanie interaktywnej legendy
         var legend = L.control({ position: 'bottomright' });
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'legend');
             div.innerHTML = `
-                <h4>Legenda</h4>
+                <h4>${t.legendTitle}</h4>
                 <div class="legend-item">
                     <span class="legend-key-line"></span>
-                    <span>Granica inwestycji</span>
+                    <span>${t.legendBoundary}</span>
                 </div>
                 <div class="legend-item">
                     <span class="legend-key-pv"></span>
-                    <span>Stoły fotowoltaiczne</span>
+                    <span>${t.legendPV}</span>
                 </div>
                 <div style="margin-top: 10px;">
-                    <strong>Zasięg widoczności:</strong>
+                    <strong>${t.legendVisibility}</strong>
                     <div class="visibility-gradient"></div>
                     <div class="visibility-labels">
-                        <span>Częściowa</span>
-                        <span>Całkowita</span>
+                        <span>${t.legendPartial}</span>
+                        <span>${t.legendFull}</span>
                     </div>
                 </div>
             `;

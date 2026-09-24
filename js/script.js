@@ -27,7 +27,7 @@ const translations = {
         cardRoutingTitle: "Routing & Analizy Sieciowe",
         cardRoutingDesc: "Optymalizacja tras dostaw (VRP), modelowanie kosztów transportu, wyznaczanie stref obsługi (Service Areas) oraz analizy dostępności komunikacyjnej dla łańcuchów dostaw.",
         
-        // Portfolio - 4 nowe interaktywne mapy
+        // Portfolio - 4 interaktywne mapy
         sectionPortfolioTitle: "Interaktywne Portfolio",
         portfolioSubtitle: "Przykładowe realizacje przestrzenne. Przesuwaj, przybliżaj i klikaj, aby zbadać dane.",
         
@@ -79,7 +79,7 @@ const translations = {
         cardRoutingTitle: "Routing & Network Analysis",
         cardRoutingDesc: "Delivery route optimization (VRP), transportation cost modeling, service area generation, and accessibility analysis for supply chains.",
         
-        // Portfolio - 4 nowe interaktywne mapy
+        // Portfolio - 4 interaktywne mapy
         sectionPortfolioTitle: "Interactive Portfolio",
         portfolioSubtitle: "Sample spatial projects. Pan, zoom, and click to explore the data.",
         
@@ -108,6 +108,7 @@ const translations = {
 function setLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
     
+    // 1. Tłumaczenie tekstów na stronie głównej
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
@@ -115,6 +116,7 @@ function setLanguage(lang) {
         }
     });
 
+    // 2. Przełączanie aktywnej klasy przycisków PL/EN
     const btnPl = document.getElementById('btn-pl');
     const btnEn = document.getElementById('btn-en');
     
@@ -122,6 +124,15 @@ function setLanguage(lang) {
         btnPl.classList.toggle('active', lang === 'pl');
         btnEn.classList.toggle('active', lang === 'en');
     }
+
+    // 3. Przeładowanie map w iframe z przekazaniem parametru języka
+    const mapIframes = document.querySelectorAll('iframe.portfolio-map');
+    mapIframes.forEach(iframe => {
+        if (iframe.src) {
+            const baseUrl = iframe.src.split('?')[0];
+            iframe.src = `${baseUrl}?lang=${lang}`;
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

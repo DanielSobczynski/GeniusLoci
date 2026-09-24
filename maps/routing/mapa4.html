@@ -29,7 +29,7 @@
             border-bottom: 2px solid #8c7a6b;
             padding-bottom: 6px;
         }
-        /* Nowy element legendy: Linia trasy */
+        /* Element legendy: Linia trasy */
         .legend i.line {
             width: 24px;
             height: 4px;
@@ -39,7 +39,7 @@
             opacity: 0.9;
             border-radius: 2px;
         }
-        /* Nowy element legendy: Punkt toparchii */
+        /* Element legendy: Punkt toparchii */
         .legend i.point {
             width: 10px;
             height: 10px;
@@ -59,18 +59,63 @@
     <div id="map"></div>
 
     <script>
-        // 1. Inicjalizacja mapy
+        // 1. Odczytanie parametru języka z URL (domyślnie 'pl')
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentLang = urlParams.get('lang') || 'pl';
+
+        // 2. Słownik tłumaczeń
+        const translations = {
+            pl: {
+                title: "Historyczne Szlaki - Podróż z Jerozolimy",
+                legendTitle: "Czas podróży z Jerozolimy",
+                legendSubtitle: "(Podróż piesza, ok. 30 km/dzień)",
+                toparchiesLabel: "Stolice toparchii",
+                labels: [
+                    '1 dzień (do 30 km)', 
+                    '2 dni (do 60 km)', 
+                    '3 dni (do 90 km)', 
+                    '4 dni (do 120 km)', 
+                    '5 dni (powyżej 120 km)'
+                ],
+                popupRouteTitle: "Odcinek szlaku",
+                popupDistance: "Odległość od Jerozolimy: do",
+                popupKm: "km",
+                popupDay: "Dzień podróży:",
+                defaultCityName: "Stolica toparchii"
+            },
+            en: {
+                title: "Historical Routes - Journey from Jerusalem",
+                legendTitle: "Travel Time from Jerusalem",
+                legendSubtitle: "(Walking journey, approx. 30 km/day)",
+                toparchiesLabel: "Capitals of toparchies",
+                labels: [
+                    '1 day (up to 30 km)', 
+                    '2 days (up to 60 km)', 
+                    '3 days (up to 90 km)', 
+                    '4 days (up to 120 km)', 
+                    '5 days (over 120 km)'
+                ],
+                popupRouteTitle: "Route section",
+                popupDistance: "Distance from Jerusalem: up to",
+                popupKm: "km",
+                popupDay: "Day of journey:",
+                defaultCityName: "Toparchy capital"
+            }
+        };
+
+        const t = translations[currentLang] || translations.pl;
+        document.title = t.title;
+
+        // 3. Inicjalizacja mapy
         var map = L.map('map').setView([31.7683, 35.2137], 9); 
 
-        // 2. Podkład mapowy (Esri World Topo - piękny wygląd rzeźby terenu, idealny do map historycznych Judei)
+        // 4. Podkład mapowy (Esri World Topo)
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
             maxZoom: 18
         }).addTo(map);
 
-        // 3. Funkcje stylizujące
-        
-        // Przypisywanie kolorów na podstawie kilometrów (z założeniem 30 km = 1 dzień)
+        // 5. Funkcje stylizujące
         function getLineColor(km) {
             return km <= 30  ? '#1a9850' : // 1 dzień (Ciemny zielony)
                    km <= 60  ? '#91cf60' : // 2 dni (Jasny zielony)
@@ -80,8 +125,6 @@
         }
 
         function styleLines(feature) {
-            // Kod szuka wartości dystansu w popularnych polach wynikowych z narzędzia Service Area.
-            // Jeśli nazwałeś pole inaczej podczas eksportu, zamień 'ToCumul_Length' na właściwą nazwę.
             var distance = feature.properties.ToCumul_Length || feature.properties.ToBreak || 30;
             
             return {
@@ -102,7 +145,7 @@
             });
         }
 
-        // 4. Ładowanie obu plików GeoJSON jednocześnie za pomocą Promise.all
+        // 6. Ładowanie obu plików GeoJSON jednocześnie za pomocą Promise.all
         Promise.all([
             fetch('jerozolima.geojson').then(res => res.json()),
             fetch('toparchie.geojson').then(res => res.json())
@@ -117,7 +160,7 @@
                     
                     if(distance) {
                         var days = Math.ceil(distance / 30);
-                        layer.bindPopup('<b>Odcinek szlaku</b><br>Odległość od Jerozolimy: do ' + distance.toFixed(1) + ' km<br>Dzień podróży: <b>' + days + '</b>');
+                        layer.bindPopup('<b>' + t.popupRouteTitle + '</b><br>' + t.popupDistance + ' ' + distance.toFixed(1) + ' ' + t.popupKm + '<br>' + t.popupDay + ' <b>' + days + '</b>');
                     }
                     
                     // Pogrubienie linii po najechaniu kursorem (Hover)
@@ -132,9 +175,7 @@
             var toparchiesLayer = L.geoJSON(toparchieData, {
                 pointToLayer: stylePoints,
                 onEachFeature: function(feature, layer) {
-                    // UWAGA: podmień 'Name' na nazwę kolumny z tabeli atrybutów, 
-                    // w której przechowujesz nazwy miast (np. 'nazwa', 'Toparchia', 'Miasto')
-                    var cityName = feature.properties.Name || feature.properties.nazwa || "Stolica toparchii";
+                    var cityName = feature.properties.Name || feature.properties.nazwa || t.defaultCityName;
                     layer.bindPopup('<b style="font-size:14px;">' + cityName + '</b>');
                 }
             }).addTo(map);
@@ -142,25 +183,24 @@
             // Automatyczne wykadrowanie mapy, by objąć całą rozpiętość dróg
             map.fitBounds(routesLayer.getBounds(), { padding: [40, 40] });
         })
-        .catch(err => console.error("Błąd ładowania plików GeoJSON: Upewnij się, że pliki są w tym samym folderze i uruchamiasz to na serwerze (np. Live Server). Szczegóły: ", err));
+        .catch(err => console.error("Błąd ładowania plików GeoJSON: ", err));
 
-        // 5. Dodanie legendy
+        // 7. Dodanie legendy
         var legend = L.control({position: 'bottomright'});
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'legend');
             var grades = [0, 30, 60, 90, 120]; 
-            var labels = ['1 dzień (do 30 km)', '2 dni (do 60 km)', '3 dni (do 90 km)', '4 dni (do 120 km)', '5 dni (powyżej 120 km)'];
 
-            div.innerHTML = '<h4>Czas podróży z Jerozolimy<br><small style="color:#666; font-weight:normal;">(Podróż piesza, ok. 30 km/dzień)</small></h4>';
+            div.innerHTML = '<h4>' + t.legendTitle + '<br><small style="color:#666; font-weight:normal;">' + t.legendSubtitle + '</small></h4>';
 
             // Element punktowy
-            div.innerHTML += '<i class="point"></i> Stolice toparchii<br><br>';
+            div.innerHTML += '<i class="point"></i> ' + t.toparchiesLabel + '<br><br>';
 
             // Pętla tworząca kolorowe linie w legendzie
             for (var i = 0; i < grades.length; i++) {
                 div.innerHTML +=
-                    '<i class="line" style="background:' + getLineColor(grades[i] + 1) + '"></i> ' + labels[i] + '<br>';
+                    '<i class="line" style="background:' + getLineColor(grades[i] + 1) + '"></i> ' + t.labels[i] + '<br>';
             }
             return div;
         };
