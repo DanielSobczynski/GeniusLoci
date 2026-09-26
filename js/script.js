@@ -7,7 +7,7 @@ const translations = {
         heroTitle: "Duch miejsca ukryty w danych",
         heroDesc: "Profesjonalne analizy przestrzenne (GIS), wizualizacje NMT oraz automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.",
         heroBtn: "Porozmawiajmy o Twoim projekcie",
-        sectionServicesTitle: "Dla kogo pracuję?",
+        sectionServicesTitle: "Usługi analiz przestrzennych GIS",
         
         // Karty usług
         cardDevTitle: "Deweloperzy & Inwestorzy",
