@@ -3,130 +3,149 @@ const translations = {
         navServices: "Usługi",
         navPortfolio: "Portfolio",
         navContact: "Kontakt",
-        heroSubtitle: "Doradztwo Specjalistyczne • Ekspertyzy GIS",
-        heroTitle: "Duch miejsca ukryty w danych",
-        heroDesc: "Profesjonalne analizy przestrzenne (GIS), wizualizacje NMT oraz automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.",
+
+        heroSubtitle: "Specjalistyczny konsulting GIS",
+        heroTitle: "Analizy przestrzenne GIS dla nieruchomości i biznesu",
+        heroDesc: "Duch miejsca ukryty w danych. Analizy przestrzenne, wizualizacje, modelowanie terenu i automatyzacja przetwarzania danych dla biznesu, nauki i rynku nieruchomości.",
         heroBtn: "Porozmawiajmy o Twoim projekcie",
+
         sectionServicesTitle: "Usługi analiz przestrzennych GIS",
-        
-        // Karty usług
-        cardDevTitle: "Deweloperzy & Inwestorzy",
+
+        cardDevTitle: "Analizy GIS dla Deweloperów i Inwestorów",
         cardDevDesc: "Analizy chłonności terenu, optymalizacja ukształtowania działki (LiDAR/NMT), ocena ograniczeń przestrzennych oraz weryfikacja zapisów MPZP.",
-        cardOzeTitle: "Inwestorzy OZE & Fotowoltaika",
+
+        cardOzeTitle: "Analizy GIS dla OZE i Fotowoltaiki",
         cardOzeDesc: "Analizy potencjału solarnego, badania widoczności i oddziaływania krajobrazowego, przesiewanie terenu (site screening) pod farmy PV oraz ocena stref ochronnych.",
-        cardRETitle: "Rynek Nieruchomości",
+
+        cardRETitle: "Analizy GIS dla Nieruchomości",
         cardREDesc: "Raporty atrakcyjności działek, mapy izochron (czasów dojazdu), uzbrojenia terenu i dostępności infrastruktury ułatwiające obrót nieruchomościami.",
-        cardSciTitle: "Nauka & Archeologia",
+
+        cardSciTitle: "GIS dla Nauki i Archeologii",
         cardSciDesc: "Zaawansowane przetwarzanie danych przestrzennych, cyfrowe modele terenu, detekcja mikrorzeźby oraz identyfikacja obiektów z danych LiDAR do publikacji.",
-        cardB2BTitle: "Biznes & Automatyzacja (B2B)",
+
+        cardB2BTitle: "Biznes i Automatyzacja GIS",
         cardB2BDesc: "Automatyzacja powtarzalnych procesów GIS w Python/ArcPy, tworzenie narzędzi FME oraz dedykowanych aplikacji na platformach ESRI.",
-        cardEsgTitle: "Ochrona Środowiska & ESG",
+
+        cardEsgTitle: "Ochrona Środowiska i ESG",
         cardEsgDesc: "Analizy ryzyka powodziowego i suszowego, wyznaczanie stref retencji, analiza miejskich wysp ciepła oraz ocena ryzyk klimatycznych na potrzeby raportowania ESG.",
-        cardGeoTitle: "Geomarketing & Analizy Rynkowe",
+
+        cardGeoTitle: "Geomarketing i Analizy Rynkowe",
         cardGeoDesc: "Wyznaczanie stref ciążenia (Catchment Area), analizy demograficzne i przestrzenne nasycenia rynku, wspierające wybór optymalnych lokalizacji dla handlu i usług.",
-        cardRoutingTitle: "Routing & Analizy Sieciowe",
+
+        cardRoutingTitle: "Routing i Analizy Sieciowe",
         cardRoutingDesc: "Optymalizacja tras dostaw (VRP), modelowanie kosztów transportu, wyznaczanie stref obsługi (Service Areas) oraz analizy dostępności komunikacyjnej dla łańcuchów dostaw.",
-        
-        // Portfolio - 4 interaktywne mapy
-        sectionPortfolioTitle: "Interaktywne Portfolio",
-        portfolioSubtitle: "Przykładowe realizacje przestrzenne. Przesuwaj, przybliżaj i klikaj, aby zbadać dane.",
-        
+
+        sectionPortfolioTitle: "Przykładowe analizy przestrzenne GIS",
+        portfolioSubtitle: "Interaktywne realizacje pokazujące możliwości analiz przestrzennych, modelowania terenu, analiz dostępności i analiz sieciowych.",
+
         port1Title: "Analiza potencjału i zagrożeń działki",
         port1Desc: "Ocena odległości do infrastruktury, uzbrojenia terenu oraz analiza zagrożeń (strefy zalewowe, osuwiskowe).",
-        
+
         port2Title: "Analiza widoczności (Viewshed) dla OZE",
         port2Desc: "Modelowanie oddziaływania krajobrazowego i widoczności projektowanej farmy fotowoltaicznej z otaczających terenów.",
-        
+
         port3Title: "Mapa izochron – Dostępność czasowa",
         port3Desc: "Analiza stref czasu dojazdu (samochodem, pieszo, transportem publicznym) z wybranej nieruchomości.",
-        
+
         port4Title: "Serwis routingowy dla danych badawczych",
         port4Desc: "Zaawansowana analiza sieciowa i optymalizacja tras dla projektów naukowych, historycznych oraz logistycznych.",
-        
-        // Kontakt
+
         sectionContactTitle: "Skontaktuj się ze mną",
         contactSubtitle: "Szukasz wsparcia przy analizie przestrzennej lub automatyzacji procesów GIS?",
         contactLinkedin: "Zobacz mój profil",
         contactGoogle: "Profil Firmowy",
-        
+
         footerRights: "Genius Loci - Analizy Przestrzenne. Wszelkie prawa zastrzeżone."
     },
+
     en: {
         navServices: "Services",
         navPortfolio: "Portfolio",
         navContact: "Contact",
-        heroSubtitle: "Specialized Consultancy • GIS Expertise",
-        heroTitle: "Genius Loci – Hidden in Spatial Data",
-        heroDesc: "Professional GIS spatial analysis, 3D terrain modeling (DEM), and data processing automation for business, research, and real estate.",
+
+        heroSubtitle: "Specialized GIS Consultancy",
+        heroTitle: "GIS Spatial Analysis for Real Estate and Business",
+        heroDesc: "The spirit of a place revealed through data. Spatial analysis, visualization, terrain modeling, and data processing automation for business, research, and real estate.",
         heroBtn: "Let's discuss your project",
-        sectionServicesTitle: "Who I Work With",
-        
-        // Karty usług
-        cardDevTitle: "Developers & Investors",
+
+        sectionServicesTitle: "GIS Spatial Analysis Services",
+
+        cardDevTitle: "GIS Analysis for Developers & Investors",
         cardDevDesc: "Site capacity analysis, terrain optimization based on LiDAR/DEM data, spatial constraint evaluation, and zoning plan verification.",
-        cardOzeTitle: "Renewable Energy & PV Solar",
-        cardOzeDesc: "Solar potential assessment, visibility & landscape impact analysis, PV site screening, and environmental constraint mapping.",
-        cardRETitle: "Real Estate Market",
-        cardREDesc: "Property attractiveness reports, isochrone (travel time) mapping, utility availability, and infrastructure analysis to aid transactions.",
-        cardSciTitle: "Science & Archaeology",
-        cardSciDesc: "Advanced spatial data processing, digital elevation models, micro-relief detection, and LiDAR-based feature identification for publications.",
-        cardB2BTitle: "Business & GIS Automation (B2B)",
+
+        cardOzeTitle: "GIS Analysis for Renewable Energy & Solar PV",
+        cardOzeDesc: "Solar potential assessment, visibility and landscape impact analysis, PV site screening, and environmental constraint mapping.",
+
+        cardRETitle: "GIS Analysis for Real Estate",
+        cardREDesc: "Property attractiveness reports, isochrone travel-time mapping, utility availability, and infrastructure analysis to support real estate transactions.",
+
+        cardSciTitle: "GIS for Science & Archaeology",
+        cardSciDesc: "Advanced spatial data processing, digital elevation models, micro-relief detection, and LiDAR-based feature identification for research and publications.",
+
+        cardB2BTitle: "Business & GIS Automation",
         cardB2BDesc: "Automation of repetitive GIS workflows in Python/ArcPy, FME tools, and custom spatial application development on ESRI platforms.",
+
         cardEsgTitle: "Environment & ESG Analytics",
         cardEsgDesc: "Flood and drought risk analysis, retention zone mapping, urban heat island assessment, and climate risk evaluation for ESG reporting.",
+
         cardGeoTitle: "Geomarketing & Market Analysis",
-        cardGeoDesc: "Catchment area delineation, spatial demographic analysis, and market saturation assessment to optimize retail and service locations.",
+        cardGeoDesc: "Catchment area delineation, spatial demographic analysis, and market saturation assessment to support retail and service location planning.",
+
         cardRoutingTitle: "Routing & Network Analysis",
         cardRoutingDesc: "Delivery route optimization (VRP), transportation cost modeling, service area generation, and accessibility analysis for supply chains.",
-        
-        // Portfolio - 4 interaktywne mapy
-        sectionPortfolioTitle: "Interactive Portfolio",
-        portfolioSubtitle: "Sample spatial projects. Pan, zoom, and click to explore the data.",
-        
+
+        sectionPortfolioTitle: "GIS Spatial Analysis Portfolio",
+        portfolioSubtitle: "Interactive projects demonstrating spatial analysis, terrain modeling, accessibility analysis, and network analysis.",
+
         port1Title: "Site Potential & Hazard Analysis",
-        port1Desc: "Distance assessment to infrastructure, utilities, and flood/landslide risk zone identification.",
-        
+        port1Desc: "Distance assessment to infrastructure and utilities, including flood and landslide risk zone analysis.",
+
         port2Title: "Viewshed Analysis for Renewable Energy",
-        port2Desc: "Landscape impact modeling and visibility assessment for proposed PV and wind farms.",
-        
-        port3Title: "Isochrone Map – Accessibility & Drive Time",
-        port3Desc: "Travel time zone analysis (by car, walking, public transit) from a selected property.",
-        
+        port2Desc: "Landscape impact modeling and visibility assessment for proposed photovoltaic installations.",
+
+        port3Title: "Isochrone Map – Accessibility & Travel Time",
+        port3Desc: "Travel time zone analysis by car, walking, and public transport from a selected property.",
+
         port4Title: "Routing Service for Research Data",
-        port4Desc: "Advanced network analysis and route optimization for academic, historical, and spatial research projects.",
-        
-        // Kontakt
+        port4Desc: "Advanced network analysis and route optimization for academic, historical, and logistics projects.",
+
         sectionContactTitle: "Get in Touch",
         contactSubtitle: "Looking for spatial analysis support or GIS process automation?",
         contactLinkedin: "View my profile",
         contactGoogle: "Business Profile",
-        
+
         footerRights: "Genius Loci - Spatial Analytics. All rights reserved."
     }
 };
 
+
 function setLanguage(lang) {
     localStorage.setItem('preferredLang', lang);
-    
-    // 1. Tłumaczenie tekstów na stronie głównej
+
+    // Aktualizacja języka dokumentu dla SEO i czytników ekranu
+    document.documentElement.lang = lang;
+
+    // Aktualizacja wszystkich elementów z data-i18n
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
+
         if (translations[lang] && translations[lang][key]) {
             element.textContent = translations[lang][key];
         }
     });
 
-    // 2. Przełączanie aktywnej klasy przycisków PL/EN
+    // Aktualizacja aktywnego przycisku języka
     const btnPl = document.getElementById('btn-pl');
     const btnEn = document.getElementById('btn-en');
-    
+
     if (btnPl && btnEn) {
         btnPl.classList.toggle('active', lang === 'pl');
         btnEn.classList.toggle('active', lang === 'en');
     }
 
-    // 3. Przeładowanie map w iframe z przekazaniem parametru języka
+    // Aktualizacja języka interaktywnych map
     const mapIframes = document.querySelectorAll('iframe.portfolio-map');
+
     mapIframes.forEach(iframe => {
         if (iframe.src) {
             const baseUrl = iframe.src.split('?')[0];
@@ -135,17 +154,29 @@ function setLanguage(lang) {
     });
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Domyślnie język polski
     const savedLang = localStorage.getItem('preferredLang') || 'pl';
+
     setLanguage(savedLang);
 
+    // Przyciski zmiany języka
     const btnPl = document.getElementById('btn-pl');
     const btnEn = document.getElementById('btn-en');
-    
-    if (btnPl) btnPl.addEventListener('click', () => setLanguage('pl'));
-    if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
 
+    if (btnPl) {
+        btnPl.addEventListener('click', () => setLanguage('pl'));
+    }
+
+    if (btnEn) {
+        btnEn.addEventListener('click', () => setLanguage('en'));
+    }
+
+    // Aktualny rok w stopce
     const yearSpan = document.getElementById('year');
+
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
