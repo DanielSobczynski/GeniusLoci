@@ -1,6 +1,7 @@
 const translations = {
     pl: {
         navServices: "Usługi",
+        navWhy: "Dlaczego ja?",
         navPortfolio: "Portfolio",
         navContact: "Kontakt",
 
@@ -53,8 +54,6 @@ const translations = {
         why5Title: "Indywidualne podejście",
         why5Desc: "Zakres analizy dobieram do konkretnego problemu, dostępnych danych i potrzeb projektu.",
 
-        navWhy: "Dlaczego ja?",
-
         sectionProcessTitle: "Jak wygląda współpraca?",
         processSubtitle: "Od określenia problemu do gotowego wyniku analizy.",
 
@@ -95,6 +94,7 @@ const translations = {
 
     en: {
         navServices: "Services",
+        navWhy: "Why Me?",
         navPortfolio: "Portfolio",
         navContact: "Contact",
 
@@ -146,8 +146,6 @@ const translations = {
 
         why5Title: "Individual Approach",
         why5Desc: "The scope of each analysis is tailored to the specific problem, available data, and project requirements.",
-
-        navWhy: "Why Me?",
 
         sectionProcessTitle: "How Does the Process Work?",
         processSubtitle: "From defining the problem to delivering the final analysis.",

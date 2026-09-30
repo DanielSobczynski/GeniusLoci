@@ -309,12 +309,26 @@ section {
     border-color: var(--accent-color);
 }
 
-.why-number {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+.why-icon {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(109, 92, 83, 0.12);
     color: var(--accent-color);
-    margin-bottom: 14px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    transition: var(--transition);
+}
+
+.why-card:hover .why-icon {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.why-icon svg {
+    stroke: currentColor;
 }
 
 .why-card h3 {
