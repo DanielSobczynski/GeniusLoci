@@ -274,7 +274,7 @@ section {
 
 
 /* =========================================
-   7. SEKCJA "DLACZE GENIUS LOCI?"
+   7. SEKCJA "DLACZEGO GENIUS LOCI?"
    ========================================= */
 .why-us {
     background-color: rgba(220, 212, 199, 0.18);
@@ -344,98 +344,96 @@ section {
     line-height: 1.55;
 }
 
-
 /* =========================================
-   8. SEKCJA "JAK WYGLĄDA WSPÓŁPRACA?"
+   8. SEKCJA "JAK WYGLĄDA WSPÓŁPRACA?" (DARK)
    ========================================= */
 
 .process-dark {
     background-color: var(--primary-color);
     color: var(--white);
-    position: relative;
+    padding: 90px 0;
 }
 
-.process-dark .light-title {
+.process-dark .section-title {
     color: var(--white);
 }
 
-.process-dark .light-subtitle {
+.process-dark .section-subtitle {
     color: #c5bcae;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .process-timeline {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: 40px;
-    position: relative;
-}
-
-.process-timeline::before {
-    content: '';
-    position: absolute;
-    top: 45px;
-    left: 10%;
-    right: 10%;
-    height: 2px;
-    background: rgba(220, 212, 199, 0.25);
-    z-index: 1;
+    margin-top: 50px;
 }
 
 .process-step-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(220, 212, 199, 0.15);
-    padding: 30px 20px;
+    background-color: #382e29; /* Kryjące, ciemne tło (nie prześwituje) */
+    border: 1px solid rgba(220, 212, 199, 0.2);
+    padding: 30px 22px;
     border-radius: 12px;
     position: relative;
-    z-index: 2;
-    backdrop-filter: blur(4px);
     transition: var(--transition);
 }
 
 .process-step-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.09);
-    border-color: var(--border-color);
+    border-color: var(--accent-color);
+    background-color: #40352f;
 }
 
+/* Subtelne strzałki łączące kroki na ekranach komputerów */
+@media (min-width: 993px) {
+    .process-step-card:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        right: -15px;
+        top: 32px;
+        color: var(--accent-color);
+        font-size: 1.3rem;
+        font-weight: bold;
+        z-index: 10;
+    }
+}
 
 .step-badge {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     background-color: var(--bg-color);
     color: var(--primary-color);
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .process-step-card h3 {
     color: var(--white);
     font-size: 1.15rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .process-step-card p {
     color: #d1c8bc;
-    font-size: 0.92rem;
-    line-height: 1.5;
+    font-size: 0.93rem;
+    line-height: 1.55;
 }
 
-
+/* Responsywność */
 @media (max-width: 992px) {
     .process-timeline {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
-    }
-    
-    .process-timeline::before {
-        display: none; 
     }
 }
 
@@ -444,7 +442,6 @@ section {
         grid-template-columns: 1fr;
     }
 }
-
 
 /* =========================================
    9. SEKCJA PORTFOLIO
