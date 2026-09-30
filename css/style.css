@@ -23,7 +23,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Płynne przewijanie do sekcji po kliknięciu w menu */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -101,7 +101,7 @@ section {
 }
 
 .logo-img {
-    height: 38px; /* Odpowiednia wielkość dla samego znaku GL */
+    height: 38px;
     width: auto;
     object-fit: contain;
 }
@@ -156,8 +156,12 @@ section {
    5. SEKCJA HERO (Z NAKŁADKĄ)
    ========================================= */
 .hero {
-    background: linear-gradient(rgba(244, 240, 232, 0.4), rgba(244, 240, 232, 0.6)), 
-                url('../assets/hero-bg.png') center/cover no-repeat;
+    background: linear-gradient(
+        rgba(244, 240, 232, 0.4),
+        rgba(244, 240, 232, 0.6)
+    ), 
+    url('../assets/hero-bg.png') center/cover no-repeat;
+
     color: var(--primary-color);
     padding: 140px 0 90px;
     min-height: 80vh;
@@ -225,7 +229,7 @@ section {
 }
 
 /* =========================================
-   6. SEKCJA USŁUG (8 kart "Dla kogo pracuję?")
+   6. SEKCJA USŁUG
    ========================================= */
 .services-grid {
     display: grid;
@@ -268,8 +272,125 @@ section {
     line-height: 1.5;
 }
 
+
 /* =========================================
-   7. SEKCJA PORTFOLIO (Siatka 2x2 na mapy)
+   7. SEKCJA "DLACZE GENIUS LOCI?"
+   ========================================= */
+.why-us {
+    background-color: rgba(220, 212, 199, 0.18);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.why-us .section-subtitle {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.why-card {
+    background-color: var(--white);
+    padding: 30px 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+}
+
+.why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(43, 35, 31, 0.08);
+    border-color: var(--accent-color);
+}
+
+.why-number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent-color);
+    margin-bottom: 14px;
+}
+
+.why-card h3 {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    line-height: 1.35;
+}
+
+.why-card p {
+    font-size: 0.94rem;
+    color: var(--text-color);
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   8. SEKCJA "JAK WYGLĄDA WSPÓŁPRACA?"
+   ========================================= */
+.process {
+    background-color: var(--bg-color);
+}
+
+.process .section-subtitle {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    position: relative;
+}
+
+.process-step {
+    position: relative;
+    background-color: var(--white);
+    padding: 35px 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+}
+
+.process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(43, 35, 31, 0.08);
+    border-color: var(--accent-color);
+}
+
+.process-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.process-step h3 {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    line-height: 1.35;
+}
+
+.process-step p {
+    font-size: 0.94rem;
+    color: var(--text-color);
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   9. SEKCJA PORTFOLIO
    ========================================= */
 .portfolio {
     background-color: rgba(220, 212, 199, 0.25);
@@ -326,8 +447,9 @@ section {
     line-height: 1.5;
 }
 
+
 /* =========================================
-   8. SEKCJA KONTAKT
+   10. SEKCJA KONTAKT
    ========================================= */
 .contact {
     text-align: center;
@@ -360,8 +482,9 @@ section {
     border-color: var(--primary-color);
 }
 
+
 /* =========================================
-   9. STOPKA
+   11. STOPKA
    ========================================= */
 footer {
     background-color: var(--primary-color);
@@ -375,24 +498,32 @@ footer p {
     font-size: 0.9rem;
 }
 
+
 /* =========================================
-   10. RESPONSIVNOŚĆ (MEDIA QUERIES)
+   12. RESPONSYWNOŚĆ
    ========================================= */
 @media (max-width: 992px) {
+
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .map-grid {
         grid-template-columns: 1fr;
     }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+
 @media (max-width: 768px) {
+
     .nav-container {
         flex-wrap: wrap;
     }
-    
+
     .nav-links {
         order: 3;
         width: 100%;
@@ -411,19 +542,48 @@ footer p {
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
+
 @media (max-width: 480px) {
+
+    section {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 35px;
+    }
+
     .services-grid,
-    .map-grid {
+    .map-grid,
+    .why-grid {
         grid-template-columns: 1fr;
     }
 
     .map-container iframe {
         height: 300px;
+    }
+
+    .why-card,
+    .process-step {
+        padding: 25px 20px;
     }
 }

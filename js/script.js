@@ -35,6 +35,41 @@ const translations = {
         cardRoutingTitle: "Routing i Analizy Sieciowe",
         cardRoutingDesc: "Optymalizacja tras dostaw (VRP), modelowanie kosztów transportu, wyznaczanie stref obsługi (Service Areas) oraz analizy dostępności komunikacyjnej dla łańcuchów dostaw.",
 
+        sectionWhyTitle: "Dlaczego Genius Loci?",
+        whySubtitle: "Łączę wiedzę geograficzną, analizę danych przestrzennych i technologie GIS, aby przekładać złożone dane na użyteczne informacje.",
+
+        why1Title: "Specjalistyczna wiedza GIS",
+        why1Desc: "Analizy przestrzenne, modelowanie terenu, dane LiDAR, analizy sieciowe i automatyzacja procesów GIS.",
+
+        why2Title: "Doświadczenie projektowe",
+        why2Desc: "Praca z rzeczywistymi danymi przestrzennymi i projektami wymagającymi dokładności, powtarzalności oraz kontroli jakości.",
+
+        why3Title: "Technologie i automatyzacja",
+        why3Desc: "Python, ArcGIS, FME i narzędzia geospatial pozwalające automatyzować powtarzalne zadania i tworzyć dedykowane rozwiązania.",
+
+        why4Title: "Dane, które wspierają decyzje",
+        why4Desc: "Nie chodzi tylko o stworzenie mapy. Celem analizy jest dostarczenie informacji, które pomagają lepiej ocenić lokalizację, ryzyko lub potencjał projektu.",
+
+        why5Title: "Indywidualne podejście",
+        why5Desc: "Zakres analizy dobieram do konkretnego problemu, dostępnych danych i potrzeb projektu.",
+
+        navWhy: "Dlaczego ja?",
+
+        sectionProcessTitle: "Jak wygląda współpraca?",
+        processSubtitle: "Od określenia problemu do gotowego wyniku analizy.",
+
+        process1Title: "Określenie problemu",
+        process1Desc: "Ustalamy cel projektu, zakres analizy oraz oczekiwany rezultat.",
+
+        process2Title: "Dane i metodologia",
+        process2Desc: "Dobieram odpowiednie dane przestrzenne oraz metody analizy.",
+
+        process3Title: "Analiza GIS",
+        process3Desc: "Wykonuję analizę, modelowanie przestrzenne lub automatyzację procesu.",
+
+        process4Title: "Wynik i rekomendacje",
+        process4Desc: "Otrzymujesz mapę, raport, aplikację lub inne rozwiązanie dopasowane do projektu.",
+
         sectionPortfolioTitle: "Przykładowe analizy przestrzenne GIS",
         portfolioSubtitle: "Interaktywne realizacje pokazujące możliwości analiz przestrzennych, modelowania terenu, analiz dostępności i analiz sieciowych.",
 
@@ -93,6 +128,41 @@ const translations = {
 
         cardRoutingTitle: "Routing & Network Analysis",
         cardRoutingDesc: "Delivery route optimization (VRP), transportation cost modeling, service area generation, and accessibility analysis for supply chains.",
+
+        sectionWhyTitle: "Why Genius Loci?",
+        whySubtitle: "I combine geographic knowledge, spatial data analysis, and GIS technologies to turn complex data into useful information.",
+
+        why1Title: "Specialized GIS Expertise",
+        why1Desc: "Spatial analysis, terrain modeling, LiDAR data, network analysis, and GIS workflow automation.",
+
+        why2Title: "Project Experience",
+        why2Desc: "Experience working with real-world spatial data and projects requiring accuracy, repeatability, and quality control.",
+
+        why3Title: "Technology & Automation",
+        why3Desc: "Python, ArcGIS, FME, and geospatial tools for automating repetitive tasks and building dedicated solutions.",
+
+        why4Title: "Data That Supports Decisions",
+        why4Desc: "The goal is not simply to create a map, but to provide information that helps assess a location, risk, or project potential.",
+
+        why5Title: "Individual Approach",
+        why5Desc: "The scope of each analysis is tailored to the specific problem, available data, and project requirements.",
+
+        navWhy: "Why Me?",
+
+        sectionProcessTitle: "How Does the Process Work?",
+        processSubtitle: "From defining the problem to delivering the final analysis.",
+
+        process1Title: "Define the Problem",
+        process1Desc: "We establish the project objective, analysis scope, and expected outcome.",
+
+        process2Title: "Data & Methodology",
+        process2Desc: "I select the appropriate spatial data and analytical methods.",
+
+        process3Title: "GIS Analysis",
+        process3Desc: "I perform the analysis, spatial modeling, or process automation.",
+
+        process4Title: "Results & Recommendations",
+        process4Desc: "You receive a map, report, application, or other solution tailored to the project.",
 
         sectionPortfolioTitle: "GIS Spatial Analysis Portfolio",
         portfolioSubtitle: "Interactive projects demonstrating spatial analysis, terrain modeling, accessibility analysis, and network analysis.",
